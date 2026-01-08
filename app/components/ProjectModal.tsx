@@ -1,6 +1,5 @@
 import { ProjectTextType } from "../hooks/hooks";
-import githubSVG from "public/github-mark-white.svg";
-import { ForwardedRef, forwardRef } from "react";
+import { ForwardedRef, forwardRef, useEffect } from "react";
 
 interface ProjectModaltype {
   title: string;
@@ -14,6 +13,13 @@ const ProjectModal = forwardRef(function (
   { setActive, images, text }: ProjectModaltype,
   ref: ForwardedRef<HTMLDivElement>
 ) {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
+
   return (
     <div className="fixed top-0 bottom-0 z-30 flex justify-center w-screen px-5 pt-8" ref={ref}>
       <div className="fixed top-0 bottom-0 w-screen -z-10 bg-neutral-800"></div>

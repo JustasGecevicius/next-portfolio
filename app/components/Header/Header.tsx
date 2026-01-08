@@ -109,14 +109,14 @@ export default function Header() {
               onClick={onClickProjects}
               className={`md:text-xl ${
                 !isTop ? "text-[#00aeff]" : "text-white"
-              } flex items-center  font-semibold hover:cursor-pointer`}
+              } flex items-center  font-semibold hover:cursor-pointer hover:text-blue-300`}
             >
               Projects
             </div>
             <button
               className={`md:text-xl ${
                 !isTop ? "text-[#00aeff]" : "text-white"
-              } flex items-center `}
+              } flex items-center hover:text-blue-300`}
               onClick={onClickContacts}
             >
               Contacts

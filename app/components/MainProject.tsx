@@ -18,7 +18,7 @@ export default function MainProject({ project, db }: MainProjectType) {
       <img
         src={projectImages ? projectImages[0] : "/placeholder-image.png"}
         alt="Project Image"
-        className="rounded-lg md:grow md:basis-0 md:h-full md:w-48"
+        className="rounded-lg md:grow md:basis-0 md:h-full md:w-48 shadow-sky-400 shadow-[0_0_15px]"
       />
       <div className="pt-2 h-fit md:grow md:basis-0 md:pt-0">
         {projectText ? (
@@ -43,7 +43,7 @@ export default function MainProject({ project, db }: MainProjectType) {
               <a
                 href={projectText["link"]}
                 target="_b"
-                className="h-12 text-lg md:text-xl text-blue hover:text-light_blue flex-center"
+                className="h-12 text-lg md:text-xl text-[#00aeff] hover:text-blue-300 flex-center"
               >
                 Visit Website
               </a>
