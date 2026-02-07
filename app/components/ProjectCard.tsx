@@ -1,8 +1,7 @@
 "use client";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import ProjectModal from "./ProjectModal";
 import { ProjectTextType } from "../hooks/hooks";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
