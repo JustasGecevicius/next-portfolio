@@ -1,3 +1,4 @@
+"use client";
 import { Center, Float, Text3D } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useState, useEffect } from "react";

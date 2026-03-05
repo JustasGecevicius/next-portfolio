@@ -1,20 +1,13 @@
-import { useProjectImages, useProjectText } from "../hooks/hooks";
 import { MainProjectType } from "./MainProject";
 import ProjectCard from "./ProjectCard";
 
-export default function SmallProject({ project, db, inView }: MainProjectType) {
-  const projectImages = useProjectImages(project, db);
-  const projectText = useProjectText(project, db);
-
+export default function SmallProject({ project, inView }: MainProjectType) {
   return (
-    projectImages &&
-    projectText && (
-      <ProjectCard
-        title={projectText.name}
-        images={projectImages}
-        text={projectText}
-        inView={inView}
-      />
-    )
+    <ProjectCard
+      title={project?.name}
+      images={project?.mainImage ? [project.mainImage.url] : undefined}
+      text={project?.description}
+      inView={inView}
+    />
   );
 }

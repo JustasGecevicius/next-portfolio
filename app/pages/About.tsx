@@ -1,15 +1,14 @@
 "use client";
 import { useGSAP } from "@gsap/react";
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import gsap from "gsap";
-import { memo, useCallback, useRef } from "react";
+import { memo, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 
 type AboutPropsType = {
-  setIsWaitingOnAboutAnimation: (value: boolean) => void;
+  // setIsWaitingOnAboutAnimation: (value: boolean) => void;
 };
 
-function About({ setIsWaitingOnAboutAnimation }: AboutPropsType) {
+function About() {
   const animationRefference = useRef(null);
   const { ref: inViewRef, inView } = useInView({ threshold: 0.2, triggerOnce: true });
 
@@ -19,26 +18,27 @@ function About({ setIsWaitingOnAboutAnimation }: AboutPropsType) {
         gsap.fromTo(
           animationRefference.current,
           { opacity: 0, x: -200 },
-          { opacity: 1, x: 0, duration: 1, delay: 0.3 }
+          { opacity: 1, x: 0, duration: 1, delay: 0.3 },
         );
-        setTimeout(() => setIsWaitingOnAboutAnimation(false), 1300);
+        // setTimeout(() => setIsWaitingOnAboutAnimation(false), 1300);
       }
     },
-    { scope: animationRefference, dependencies: [inView] }
+    { scope: animationRefference, dependencies: [inView] },
   );
 
-  const downloadPDF = useCallback(async () => {
-    try {
-      const storage = getStorage();
-      const url = await getDownloadURL(ref(storage, "Web Dev CV.pdf"));
-      const alink = document.createElement("a");
-      alink.href = url;
-      alink.target = "_b";
-      alink.click();
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
+  // ! FIND A REPLACEMENT
+  // const downloadPDF = useCallback(async () => {
+  //   try {
+  //     const storage = getStorage();
+  //     const url = await getDownloadURL(ref(storage, "Web Dev CV.pdf"));
+  //     const alink = document.createElement("a");
+  //     alink.href = url;
+  //     alink.target = "_b";
+  //     alink.click();
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }, []);
 
   return (
     <div className="flex flex-col items-center justify-center h-screen p-5" ref={inViewRef}>
@@ -66,11 +66,11 @@ function About({ setIsWaitingOnAboutAnimation }: AboutPropsType) {
             <span className="italic text-[#00aeff]"> contacts page.</span>
           </div>
           <div className="flex flex-row items-center justify-center w-full mt-4">
-            <button type="button" onClick={downloadPDF}>
+            {/* <button type="button" onClick={downloadPDF}>
               <p className="text-[#00aeff] md:text-lg hover:text-blue-300">
                 Click Here for a Resume!
               </p>
-            </button>
+            </button> */}
           </div>
         </div>
       )}
