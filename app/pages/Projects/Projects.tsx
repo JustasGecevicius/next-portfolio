@@ -19,8 +19,23 @@ const QUERY = gql`
   }
 `;
 
+export type AllProjectsResponse = {
+  allProjects: {
+    id: string;
+    name: string;
+    description: string;
+    technologies: string;
+    visitLink: string;
+    githubLink: string;
+    isMain: boolean;
+    mainImage: {
+      url: string;
+    };
+  }[];
+};
+
 export default async function Projects() {
-  const data = await datoClient.request(QUERY);
+  const data = (await datoClient.request(QUERY)) as AllProjectsResponse;
 
   const { mainProjects, smallProjects } = data.allProjects.reduce(
     (acc, project) => {
@@ -31,7 +46,10 @@ export default async function Projects() {
       }
       return acc;
     },
-    { mainProjects: [], smallProjects: [] },
+    {
+      mainProjects: [] as AllProjectsResponse["allProjects"],
+      smallProjects: [] as AllProjectsResponse["allProjects"],
+    },
   );
 
   return <ProjectsClient mainProjects={mainProjects} smallProjects={smallProjects} />;

@@ -2,14 +2,13 @@
 
 import { useRef, useState } from "react";
 import ProjectModal from "./ProjectModal";
-import { ProjectTextType } from "../hooks/hooks";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 interface ProjectCardType {
   title: string;
   images: string[];
-  text: ProjectTextType;
+  text: string;
   inView?: boolean;
   technologies?: string;
   visitLink?: string;
@@ -64,7 +63,7 @@ export default function ProjectCard({
             alt="projectImage"
           />
         </div>
-        <h3 className="pt-2 text-lg text-center md:text-xl">{text["name"]}</h3>
+        <h3 className="pt-2 text-lg text-center md:text-xl">{title}</h3>
       </div>
     )
   );

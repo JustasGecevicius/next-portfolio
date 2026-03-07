@@ -1,5 +1,7 @@
+import { AllProjectsResponse } from "../pages/Projects/Projects";
+
 export interface MainProjectType {
-  project: string;
+  project: AllProjectsResponse["allProjects"][number];
   inView?: boolean;
 }
 
@@ -12,54 +14,46 @@ export default function MainProject({ project }: MainProjectType) {
         className="rounded-lg md:grow md:basis-0 md:h-full md:w-48 shadow-sky-400 shadow-[0_0_15px]"
       />
       <div className="pt-2 h-fit md:grow md:basis-0 md:pt-0">
-        {project?.description ? (
-          <>
-            <h3 className="pt-4 text-2xl text-center md:text-3xl">{project.name}</h3>
-            <div className="pt-2 h-fit md:pt-4">
-              <p className="text-justify md:text-xl">{project.description}</p>
-              <h4 className="pt-2 text-lg font-semibold text-center md:text-xl md:pt-4">
-                Technologies Used
-              </h4>
-              <ul className="pt-2 text-center md:pt-4">
-                {project?.technologies?.split("* ").map((elem, index) => {
-                  return (
-                    <li key={index} className="italic md:text-lg">
-                      {elem}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-            <div className="flex flex-row justify-center pt-2 gap-x-2 md:pt-4">
-              {project.visitLink && (
-                <a
-                  href={project.visitLink}
-                  target="_blank"
-                  className="h-12 text-lg md:text-xl text-[#00aeff] hover:text-blue-300 flex-center"
-                >
-                  Visit Website
-                </a>
-              )}
-              {project.githubLink && (
-                <a
-                  href={project.githubLink}
-                  target="_blank"
-                  className="h-12 p-0 px-2 hover:scale-125 flex-center"
-                >
-                  <img
-                    src={"/assets/github-mark-white.svg"}
-                    alt="github-image"
-                    className="h-2/3 aspect-square"
-                  />
-                </a>
-              )}
-            </div>
-          </>
-        ) : (
-          <div className="flex items-center justify-center h-32 md:h-48">
-            <ClipLoader color="#00aeff" />
-          </div>
-        )}
+        <h3 className="pt-4 text-2xl text-center md:text-3xl">{project.name}</h3>
+        <div className="pt-2 h-fit md:pt-4">
+          <p className="text-justify md:text-xl">{project.description}</p>
+          <h4 className="pt-2 text-lg font-semibold text-center md:text-xl md:pt-4">
+            Technologies Used
+          </h4>
+          <ul className="pt-2 text-center md:pt-4">
+            {project?.technologies?.split("* ").map((elem, index) => {
+              return (
+                <li key={index} className="italic md:text-lg">
+                  {elem}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+        <div className="flex flex-row justify-center pt-2 gap-x-2 md:pt-4">
+          {project.visitLink && (
+            <a
+              href={project.visitLink}
+              target="_blank"
+              className="h-12 text-lg md:text-xl text-[#00aeff] hover:text-blue-300 flex-center"
+            >
+              Visit Website
+            </a>
+          )}
+          {project.githubLink && (
+            <a
+              href={project.githubLink}
+              target="_blank"
+              className="h-12 p-0 px-2 hover:scale-125 flex-center"
+            >
+              <img
+                src={"/assets/github-mark-white.svg"}
+                alt="github-image"
+                className="h-2/3 aspect-square"
+              />
+            </a>
+          )}
+        </div>
         <p className="w-full mt-4 mb-2 border-b-2 border-white border-solid rounded-full md:hidden"></p>
       </div>
     </div>

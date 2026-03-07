@@ -2,8 +2,14 @@
 import MainProject from "@/app/components/MainProject";
 import SmallProject from "@/app/components/SmallProject";
 import { useInView } from "react-intersection-observer";
+import { AllProjectsResponse } from "./Projects";
 
-export function ProjectsClient({ mainProjects, smallProjects }: any) {
+type ProjectsClientProps = {
+  mainProjects: AllProjectsResponse["allProjects"];
+  smallProjects: AllProjectsResponse["allProjects"];
+};
+
+export function ProjectsClient({ mainProjects, smallProjects }: ProjectsClientProps) {
   const { ref, inView } = useInView({
     threshold: 0.1,
     triggerOnce: true,

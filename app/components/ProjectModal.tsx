@@ -1,11 +1,10 @@
-import { ProjectTextType } from "../hooks/hooks";
 import { useEffect } from "react";
 
 interface ProjectModaltype {
   title: string;
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
   images: string[];
-  text: ProjectTextType;
+  text: string;
   technologies?: string;
   visitLink?: string;
   githubLink?: string;
@@ -15,6 +14,7 @@ export default function ProjectModal({
   setActive,
   images,
   text,
+  title,
   technologies,
   visitLink,
   githubLink,
@@ -51,8 +51,8 @@ export default function ProjectModal({
           })}
         </div>
         <div className="overflow-y-auto basis-0 grow">
-          <h3 className="p-2 text-xl font-bold text-center">{text["name"]}</h3>
-          <p className="">{text["p"]}</p>
+          <h3 className="p-2 text-xl font-bold text-center">{title}</h3>
+          <p className="">{text}</p>
           <h4 className="p-2 text-center">Technologies Used</h4>
           <ul className="p-2 text-center">
             {technologies?.split("* ").map((elem, index) => {
