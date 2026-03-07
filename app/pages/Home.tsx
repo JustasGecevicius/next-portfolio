@@ -1,11 +1,10 @@
-import { lazy, Suspense } from "react";
+import { Suspense } from "react";
 import { ClipLoader } from "react-spinners";
 import { MemoizedFloatyBoys } from "../components/FloatyBoys/FloatyBoys";
-
-const HomeWindow = lazy(() => import("./HomeWindow"));
-const About = lazy(() => import("./About"));
-const TechStack = lazy(() => import("./TechStack"));
-const Projects = lazy(() => import("./Projects/Projects"));
+import HomeWindow from "./HomeWindow";
+import About from "./About";
+import TechStack from "./TechStack";
+import Projects from "./Projects/Projects";
 
 export default function Home() {
   return (

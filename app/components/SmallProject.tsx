@@ -7,6 +7,9 @@ export default function SmallProject({ project, inView }: MainProjectType) {
       title={project?.name}
       images={project?.mainImage ? [project.mainImage.url] : undefined}
       text={project?.description}
+      technologies={project?.technologies}
+      visitLink={project?.visitLink}
+      githubLink={project?.githubLink}
       inView={inView}
     />
   );

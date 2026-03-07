@@ -1,14 +1,24 @@
 import { ProjectTextType } from "../hooks/hooks";
-import { ForwardedRef, forwardRef, RefObject, useEffect } from "react";
+import { useEffect } from "react";
 
 interface ProjectModaltype {
   title: string;
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
   images: string[];
   text: ProjectTextType;
+  technologies?: string;
+  visitLink?: string;
+  githubLink?: string;
 }
 
-export default function ProjectModal({ setActive, images, text }: ProjectModaltype) {
+export default function ProjectModal({
+  setActive,
+  images,
+  text,
+  technologies,
+  visitLink,
+  githubLink,
+}: ProjectModaltype) {
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -45,7 +55,7 @@ export default function ProjectModal({ setActive, images, text }: ProjectModalty
           <p className="">{text["p"]}</p>
           <h4 className="p-2 text-center">Technologies Used</h4>
           <ul className="p-2 text-center">
-            {text["tech"].map((elem, index) => {
+            {technologies?.split("* ").map((elem, index) => {
               return (
                 <li key={index} className="italic">
                   {elem}
@@ -54,10 +64,10 @@ export default function ProjectModal({ setActive, images, text }: ProjectModalty
             })}
           </ul>
           <div className="flex flex-row justify-center pt-2 mb-2 overflow-hidden h-14 gap-x-2">
-            <a href={text["link"]} target="_b" className="h-full">
+            <a href={visitLink} target="_blank" className="h-full">
               <button className="h-full">Visit Website</button>
             </a>
-            <a href={text["linkGithub"]} target="_b" className="h-full">
+            <a href={githubLink} target="_blank" className="h-full">
               <button className="h-full p-0 px-2">
                 <img
                   src={"/assets/github-mark-white.svg"}

@@ -31,24 +31,28 @@ export default function MainProject({ project }: MainProjectType) {
               </ul>
             </div>
             <div className="flex flex-row justify-center pt-2 gap-x-2 md:pt-4">
-              <a
-                href={project.visitLink}
-                target="_blank"
-                className="h-12 text-lg md:text-xl text-[#00aeff] hover:text-blue-300 flex-center"
-              >
-                Visit Website
-              </a>
-              <a
-                href={project.githubLink}
-                target="_blank"
-                className="h-12 p-0 px-2 hover:scale-125 flex-center"
-              >
-                <img
-                  src={"/assets/github-mark-white.svg"}
-                  alt="github-image"
-                  className="h-2/3 aspect-square"
-                />
-              </a>
+              {project.visitLink && (
+                <a
+                  href={project.visitLink}
+                  target="_blank"
+                  className="h-12 text-lg md:text-xl text-[#00aeff] hover:text-blue-300 flex-center"
+                >
+                  Visit Website
+                </a>
+              )}
+              {project.githubLink && (
+                <a
+                  href={project.githubLink}
+                  target="_blank"
+                  className="h-12 p-0 px-2 hover:scale-125 flex-center"
+                >
+                  <img
+                    src={"/assets/github-mark-white.svg"}
+                    alt="github-image"
+                    className="h-2/3 aspect-square"
+                  />
+                </a>
+              )}
             </div>
           </>
         ) : (

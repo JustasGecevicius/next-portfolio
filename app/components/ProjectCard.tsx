@@ -1,4 +1,5 @@
 "use client";
+
 import { useRef, useState } from "react";
 import ProjectModal from "./ProjectModal";
 import { ProjectTextType } from "../hooks/hooks";
@@ -10,16 +11,27 @@ interface ProjectCardType {
   images: string[];
   text: ProjectTextType;
   inView?: boolean;
+  technologies?: string;
+  visitLink?: string;
+  githubLink?: string;
 }
 
-export default function ProjectCard({ title, images, text, inView }: ProjectCardType) {
+export default function ProjectCard({
+  title,
+  images,
+  text,
+  inView,
+  technologies,
+  visitLink,
+  githubLink,
+}: ProjectCardType) {
   const ref = useRef(null);
   useGSAP(
     () => {
       inView &&
         gsap.fromTo(ref.current, { opacity: 0, x: -400 }, { opacity: 1, x: 0, duration: 0.5 });
     },
-    { scope: ref, dependencies: [inView] }
+    { scope: ref, dependencies: [inView] },
   );
 
   const [active, setActive] = useState(false);
@@ -29,7 +41,15 @@ export default function ProjectCard({ title, images, text, inView }: ProjectCard
   };
 
   return active ? (
-    <ProjectModal title={title} setActive={setActive} images={images} text={text} />
+    <ProjectModal
+      title={title}
+      setActive={setActive}
+      images={images}
+      text={text}
+      technologies={technologies}
+      visitLink={visitLink}
+      githubLink={githubLink}
+    />
   ) : (
     inView && (
       <div
