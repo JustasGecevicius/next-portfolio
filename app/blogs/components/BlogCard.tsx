@@ -4,6 +4,7 @@ interface BlogCardProps {
   blog: {
     id: string;
     title: string;
+    slug: string;
     excerpt: string;
     author?: string;
     publisheddate?: string;

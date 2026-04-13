@@ -23,7 +23,7 @@ const QUERY = gql`
   }
 `;
 
-export default async function BlogPage({ params }: { params: { id: string } }) {
+export default async function BlogPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const data = await datoClient.request(QUERY, { slug });
 
