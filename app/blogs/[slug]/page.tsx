@@ -4,8 +4,8 @@ import Image from "next/image";
 import { datoClient } from "../../config/datoCMS";
 
 const QUERY = gql`
-  query BlogPost($id: ItemId!) {
-    blog(filter: { id: { eq: $id } }) {
+  query BlogPost($slug: String!) {
+    blog(filter: { slug: { eq: $slug } }) {
       title
       excerpt
       author
@@ -23,16 +23,11 @@ const QUERY = gql`
   }
 `;
 
-export default async function BlogPage({
-  params,
-}: {
-  params: { id: string };
-}) {
-  const data = await datoClient.request(QUERY, {
-    id: params.id,
-  });
+export default async function BlogPage({ params }: { params: { id: string } }) {
+  const { slug } = await params;
+  const data = await datoClient.request(QUERY, { slug });
 
-  const post = data.blog;
+  const post = data?.blog;
 
   if (!post) {
     return <div>Post not found</div>;
@@ -45,8 +40,8 @@ export default async function BlogPage({
 
       {/* Meta */}
       <div className="text-gray-500 mb-6">
-        <span>By {post.author}</span> •{" "}
-        <span>{new Date(post.publisheddate).toDateString()}</span>
+        <span>By {post.author}</span>{" "}
+        {post?.publisheddate ? <span> • {new Date(post.publisheddate).toDateString()}</span> : null}
       </div>
 
       {/* Cover Image */}

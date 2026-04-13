@@ -7,6 +7,7 @@ import * as THREE from "three";
 import { Center, Float, Text3D } from "@react-three/drei";
 import { CANVAS_CAMERA_VALUES, FLOAT_FLOATING_RANGE, FLOAT_POSITION } from "./constants";
 import { POINT_LIGHT_COMPONENT_CONSTANTS } from "./component_constants";
+import Link from "next/link";
 
 export default function Header() {
   const [contactsOpen, setContactsOpen] = useState(false);
@@ -69,9 +70,9 @@ export default function Header() {
             "fixed flex flex-row justify-between w-screen px-5 py-2 z-10 max-h-14 bg-[#00111a] top-0"
           }
         >
-          <div
+          <Link
             className="max-w-25"
-            onClick={onClickLogo}
+            href={"/"}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
           >
@@ -103,16 +104,24 @@ export default function Header() {
                 <pointLight {...light} key={light.key} />
               ))}
             </Canvas>
-          </div>
+          </Link>
           <div className="flex flex-row gap-x-5 md:pr-4">
-            <div
-              onClick={onClickProjects}
+            <Link
+              href="/blogs"
+              className={`md:text-xl ${
+                !isTop ? "text-[#00aeff]" : "text-white"
+              } flex items-center  font-semibold hover:cursor-pointer hover:text-blue-300`}
+            >
+              Blogs
+            </Link>
+            <Link
+              href="/#projects"
               className={`md:text-xl ${
                 !isTop ? "text-[#00aeff]" : "text-white"
               } flex items-center  font-semibold hover:cursor-pointer hover:text-blue-300`}
             >
               Projects
-            </div>
+            </Link>
             <button
               className={`md:text-xl ${
                 !isTop ? "text-[#00aeff]" : "text-white"
