@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-interface BlogCardProps {
+export type BlogCardProps = {
   blog: {
     id: string;
     title: string;
@@ -13,7 +13,7 @@ interface BlogCardProps {
       alt?: string;
     };
   };
-}
+};
 
 export default function BlogCard({ blog }: BlogCardProps) {
   const dateLabel = blog.publisheddate ? new Date(blog.publisheddate).toDateString() : null;

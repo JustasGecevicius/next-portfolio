@@ -1,6 +1,6 @@
 import { gql } from "graphql-request";
 import { datoClient } from "../config/datoCMS";
-import BlogCard from "./components/BlogCard";
+import BlogCard, { BlogCardProps } from "./components/BlogCard";
 
 const QUERY = gql`
   {
@@ -28,7 +28,7 @@ interface BlogsProps {}
 
 export default async function Blogs(props: BlogsProps) {
   const data = await datoClient.request(QUERY);
-  const allBlogs = data.allBlogs;
+  const allBlogs = data.allBlogs as BlogCardProps["blog"][];
   return (
     <div className="w-screen flex items-center flex-col">
       <h2 className="text-lg text-center md:text-xl text-white_blue">Blogs</h2>
