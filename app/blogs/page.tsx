@@ -35,7 +35,7 @@ export default async function Blogs(props: BlogsProps) {
       <div className="p-2 max-w-3xl flex items-center flex-col">
         {allBlogs?.length && (
           <div className="pt-2 md:pt-8">
-            <div className="[&>*:nth-child(odd)]:md:flex-row-reverse">
+            <div className="[&>*:nth-child(odd)]:md:flex-row-reverse gap-4 flex flex-col">
               {allBlogs.map((blog) => (
                 <BlogCard blog={blog} key={blog?.id} />
               ))}
