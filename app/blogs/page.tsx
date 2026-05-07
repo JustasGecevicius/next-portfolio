@@ -2,6 +2,8 @@ import { gql } from "graphql-request";
 import { datoClient } from "../config/datoCMS";
 import BlogCard, { BlogCardProps } from "./components/BlogCard";
 
+export const dynamic = "force-dynamic";
+
 const QUERY = gql`
   {
     allBlogs {
