@@ -61,6 +61,15 @@ export default function Header() {
     enableBodyScroll(modal.current);
   }, []);
 
+  const onClickResume = () => {
+    const link = document.createElement("a");
+    link.href = "/Web Dev CV.pdf";
+    link.download = "CV.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <>
       <Suspense>
@@ -106,6 +115,14 @@ export default function Header() {
             </Canvas>
           </Link>
           <div className="flex flex-row gap-x-5 md:pr-4">
+            <button
+              className={`md:text-xl ${
+                !isTop ? "text-[#00aeff]" : "text-white"
+              } flex items-center hover:text-blue-300 p-0`}
+              onClick={onClickResume}
+            >
+              Resume
+            </button>
             <Link
               href="/blogs"
               className={`md:text-xl ${
@@ -125,7 +142,7 @@ export default function Header() {
             <button
               className={`md:text-xl ${
                 !isTop ? "text-[#00aeff]" : "text-white"
-              } flex items-center hover:text-blue-300`}
+              } flex items-center hover:text-blue-300 p-0`}
               onClick={onClickContacts}
             >
               Contacts
